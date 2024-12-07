@@ -42,4 +42,14 @@ defmodule AuthServiceWeb.Router do
     put "/:id", UserController, :update
     delete "/:id", UserController, :delete
   end
+
+  scope "/api/posts", AuthServiceWeb do
+    pipe_through :api
+
+    get "/", PostController, :index
+    post "/", PostController, :create
+    get "/:id", PostController, :show
+    put "/:id", PostController, :update
+    delete "/:id", PostController, :delete
+  end
 end

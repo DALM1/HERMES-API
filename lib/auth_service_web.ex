@@ -43,6 +43,7 @@ defmodule AuthServiceWeb do
 
       import Plug.Conn
       import AuthServiceWeb.Gettext
+      alias AuthServiceWeb.Router.Helpers, as: Routes
 
       unquote(verified_routes())
     end
