@@ -5,7 +5,6 @@ defmodule AuthService.Auth do
 
   import Ecto.Query, warn: false
   alias AuthService.Repo
-
   alias AuthService.Auth.User
 
   @doc """
@@ -22,7 +21,23 @@ defmodule AuthService.Auth do
   end
 
   @doc """
-  Gets a single user.
+  Gets a single user by ID.
+
+  Returns `nil` if the User does not exist.
+
+  ## Examples
+
+      iex> get_user(123)
+      %User{}
+
+      iex> get_user(456)
+      nil
+
+  """
+  def get_user(id), do: Repo.get(User, id)
+
+  @doc """
+  Gets a single user by ID.
 
   Raises `Ecto.NoResultsError` if the User does not exist.
 

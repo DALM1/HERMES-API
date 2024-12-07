@@ -3,6 +3,26 @@ defmodule AuthServiceWeb.Router do
 
   pipeline :api do
     plug :accepts, ["json"]
+    plug Guardian.Plug.Pipeline,
+      module: AuthService.Guardian,
+      error_handler: AuthServiceWeb.ErrorHandler
+  end
+
+  pipeline :admin do
+    plug :ensure_admin
+  end
+
+  defp ensure_admin(conn, _opts) do
+    current_user = Guardian.Plug.current_resource(conn)
+
+    if current_user && current_user.role == "admin" do
+      conn
+    else
+      conn
+      |> put_status(:forbidden)
+      |> json(%{error: "Accès interdit. Vous devez être administrateur pour accéder à cette ressource."})
+      |> halt()
+    end
   end
 
   scope "/api/auth", AuthServiceWeb do
@@ -13,8 +33,8 @@ defmodule AuthServiceWeb.Router do
     get "/profile", AuthController, :profile
   end
 
-  scope "/users", AuthServiceWeb do
-    pipe_through :api
+  scope "/api/users", AuthServiceWeb do
+    pipe_through [:api, :admin]
 
     get "/", UserController, :index
     get "/:id", UserController, :show
