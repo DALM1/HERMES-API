@@ -11,7 +11,7 @@ defmodule AuthService.Application do
     ===========================================================
       ⚡️ HERMES AuthService Server Running Lignning Fast
       ⚡️ http://localhost:4000
-      ⚡️ Happy coding!
+      ⚡️ Happy coding 🔥
     ===========================================================
     """)
     children = [
