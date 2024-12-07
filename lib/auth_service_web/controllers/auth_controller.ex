@@ -40,7 +40,7 @@ defmodule AuthServiceWeb.AuthController do
         conn
         |> put_status(:ok)
         |> json(%{
-          message: "⚡️ Connexion réussie ⚡️",
+          message: "⚡️ HERMES CONNECTION ESTABLISED. ⚡️",
           token: token,
           user: %{
             id: user.id,

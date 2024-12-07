@@ -7,13 +7,19 @@ defmodule AuthService.Application do
 
   @impl true
   def start(_type, _args) do
-    IO.puts("""
+    IO.puts("
     ===========================================================
+
+    _____ _____ _____ _____ _____ _____
+    |  |  |   __| __  |     |   __|   __|
+    |     |   __|    -| | | |   __|__   |
+    |__|__|_____|__|__|_|_|_|_____|_____|
+-
       ⚡️ HERMES AuthService Server Running Lignning Fast
       ⚡️ http://localhost:4000
       ⚡️ Happy coding 🔥
     ===========================================================
-    """)
+    ")
     children = [
       AuthServiceWeb.Telemetry,
       AuthService.Repo,
