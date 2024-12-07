@@ -19,6 +19,7 @@ defmodule AuthService.Auth.User do
     |> validate_required([:name, :email, :password])
     |> validate_format(:email, ~r/@/, message: "L'email doit avoir un format valide.")
     |> validate_length(:password, min: 6, message: "Le mot de passe doit contenir au moins 6 caractères.")
+    |> unique_constraint(:email, message: "Cet email est déjà utilisé.")
     |> hash_password()
   end
 
