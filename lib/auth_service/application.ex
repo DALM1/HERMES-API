@@ -15,7 +15,7 @@ defmodule AuthService.Application do
     |     |   __|    -| | | |   __|__   |
     |__|__|_____|__|__|_|_|_|_____|_____|
 -
-      ⚡️ HERMES AuthService Server Running Lignning Fast
+      ⚡️ HERMES AuthService Server Running Lightning Fast
       ⚡️ http://localhost:4000
       ⚡️ Happy coding 🔥
     ===========================================================

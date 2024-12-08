@@ -3,13 +3,12 @@ defmodule AuthService.Auth.User do
   import Ecto.Changeset
 
   @derive {Jason.Encoder, only: [:id, :name, :email, :role, :inserted_at, :updated_at]}
-
   schema "users" do
     field :name, :string
     field :email, :string
     field :password_hash, :string
     field :password, :string, virtual: true
-    field :role, :string, default: "user" # Assurez-vous que le champ est bien inclus
+    field :role, :string, default: "user"
 
     timestamps(type: :utc_datetime)
   end
